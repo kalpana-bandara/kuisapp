@@ -18,7 +18,7 @@ export default function Login({ close }) {
 
   function handleSignUp(e) {
     e.preventDefault();
-    fetch("http://localhost:5000/create-user", {
+    fetch("https://quiza-app.onrender.com/create-user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password, email: email }),
@@ -94,7 +94,7 @@ export default function Login({ close }) {
 
   function handleLogin(e) {
     e.preventDefault();
-    fetch("http://localhost:5000/login", {
+    fetch("https://quiza-app.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
