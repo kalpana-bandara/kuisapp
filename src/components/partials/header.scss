@@ -1,0 +1,22 @@
+.nav_menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+  margin-top: 20px;
+
+  &__profile {
+    background-color: beige;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+
+    img {
+      border-radius: 50px;
+    }
+  }
+}

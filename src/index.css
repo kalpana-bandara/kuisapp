@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: black;
+  overflow-y: hidden;
+  font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+input[type="submit"] {
+  font-family: "Red Hat Display", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    display: block;
+    overflow: visible;
+    margin: 0;
+    background-color: white;
+  }
+  .container {
+    width: auto !important;
+    overflow-y: visible !important;
+    height: auto !important;
+  }
+  .popup-content {
+    width: 90% !important;
+  }
+  .quiz_questions__answers .submit {
+    padding-bottom: 20px;
+  }
+}
