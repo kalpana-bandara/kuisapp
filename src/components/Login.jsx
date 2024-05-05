@@ -94,7 +94,7 @@ export default function Login({ close }) {
 
   function handleLogin(e) {
     e.preventDefault();
-    fetch("http://localhost:3000/login", {
+    fetch("https://quiza-app.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
