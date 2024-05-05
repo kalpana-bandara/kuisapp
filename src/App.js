@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token != "") {
-      fetch("http://localhost:5000/protected", {
+      fetch("https://quiza-app.onrender.com/protected", {
         method: "GET",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       })
