@@ -8,13 +8,15 @@ import { setUserImage, setUserName } from "./reducers/userReducer";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import Results from "./components/Results";
+import CategoryListScreen from "./components/CategoryListScreen";
+import Categoryquizlist from "./components/Categoryquizlist";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token != "") {
-      fetch("https://quiza-app.onrender.com/protected", {
+      fetch("http://localhost:5000/protected", {
         method: "GET",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       })
@@ -42,6 +44,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<StartScreen />} />
+            <Route path="/catagories" element={<CategoryListScreen />} />
+            <Route path="/catagories/:category" element={<Categoryquizlist />} />
             <Route path="/login" element={<Login />} />
             <Route path="/quize/:id" element={<Quize />} />
             <Route path="/results" element={<Results />} />
