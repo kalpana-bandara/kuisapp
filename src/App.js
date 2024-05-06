@@ -12,31 +12,6 @@ import CategoryListScreen from "./components/CategoryListScreen";
 import Categoryquizlist from "./components/Categoryquizlist";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token != "") {
-      fetch("https://quiza-app.onrender.com/protected", {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      })
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          const username = data.username;
-
-          const profileImageHashGrav = data.image;
-          dispatch(setUserName(username));
-          if (profileImageHashGrav != "") {
-            dispatch(setUserImage(profileImageHashGrav));
-          }
-        })
-        .catch((rejected) => {
-          console.log(rejected);
-        });
-    }
-  }, []);
   return (
     <>
       <Router>
