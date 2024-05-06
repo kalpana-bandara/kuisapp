@@ -11,7 +11,7 @@ export default function Categoryquizlist() {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/get-quizlist", {
+    fetch("https://quiza-app.onrender.com/get-quizlist", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cat_name: category }),
