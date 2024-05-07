@@ -15,6 +15,8 @@ export default function Quize() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  var sound = new Audio(clickSound);
+
   const [questions, setQuestions] = useState([]);
   const questionSwiperRef = useRef(null);
   const answerSwiperRef = useRef(null);
@@ -59,7 +61,6 @@ export default function Quize() {
 
   //handle next slide when click on submit
   const handleNextSlide = () => {
-    var sound = new Audio(clickSound);
     sound.play();
     const swiperCurrentIndex = questionSwiperRef.current.swiper.activeIndex;
     const questionID = questionSwiperRef.current.swiper.slides[swiperCurrentIndex]?.getAttribute("id");

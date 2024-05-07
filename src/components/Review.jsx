@@ -36,16 +36,14 @@ export default function Review() {
         }
       });
   }, [questionID]);
-
+  var sound = new Audio(clickSound);
   //handle next slide when click on submit
   const handleNextSlide = () => {
-    var sound = new Audio(clickSound);
     sound.play();
     questionSwiperRef.current.swiper.slideNext();
     answerSwiperRef.current.swiper.slideNext();
   };
   const handlePrevSlide = () => {
-    var sound = new Audio(clickSound);
     sound.play();
     questionSwiperRef.current.swiper.slidePrev();
     answerSwiperRef.current.swiper.slidePrev();
