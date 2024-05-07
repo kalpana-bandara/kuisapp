@@ -144,3 +144,31 @@
     transform: scale(1);
   }
 }
+
+.after-quiz {
+  margin-top: 100px;
+  display: flex;
+  column-gap: 30px;
+  align-items: end;
+  justify-content: space-evenly;
+  .utility {
+    text-align: center;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    .icon {
+      &.small {
+        svg {
+          font-size: 36px !important;
+          color: #cb9771;
+        }
+      }
+      svg {
+        font-size: 40px;
+        color: #a42fc1;
+      }
+    }
+  }
+}

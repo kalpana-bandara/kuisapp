@@ -11,6 +11,8 @@ import Results from "./components/Results";
 import CategoryListScreen from "./components/CategoryListScreen";
 import Categoryquizlist from "./components/Categoryquizlist";
 
+import Review from "./components/Review";
+
 function App() {
   return (
     <>
@@ -24,6 +26,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/quize/:id" element={<Quize />} />
             <Route path="/results" element={<Results />} />
+            <Route path="/review" element={<Review />} />
           </Routes>
         </div>
       </Router>

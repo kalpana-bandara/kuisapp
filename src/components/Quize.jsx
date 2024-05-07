@@ -7,6 +7,8 @@ import "swiper/css/pagination";
 import background from "./images/bubble-bg.png";
 import { useDispatch } from "react-redux";
 import { setCorrectCount, setIncorrectCount, setQuestionsCount } from "../reducers/resultsReducer";
+import { setReviews } from "../reducers/reviewsReducer";
+import clickSound from "./audio/submit.wav";
 
 export default function Quize() {
   const { id } = useParams();
@@ -17,14 +19,14 @@ export default function Quize() {
   const questionSwiperRef = useRef(null);
   const answerSwiperRef = useRef(null);
 
-  const [currentQuestionId, setCurrentQuestionId] = useState("");
   const [answer, setAnswer] = useState("");
-  const [correctAnswer, setCorrectAnswer] = useState("");
 
   const [wrongCount, setWrongCount] = useState(0);
   const [rightCount, setRightCount] = useState(0);
 
   const [isQuizEnd, setIsQuizEnd] = useState(false);
+
+  const [forReview, setForReview] = useState([]);
 
   //get the questions and answers to render
   useEffect(() => {
@@ -40,9 +42,6 @@ export default function Quize() {
         console.log(data);
         if (data.data.length > 0) {
           setQuestions(data.data[0]);
-          const firstQuestion = data.data[0][0];
-          setCorrectAnswer(firstQuestion.AnswerId);
-          setCurrentQuestionId(1);
         }
       });
   }, [id]);
@@ -53,38 +52,41 @@ export default function Quize() {
       dispatch(setCorrectCount(rightCount));
       dispatch(setIncorrectCount(wrongCount));
       dispatch(setQuestionsCount(questions.length));
+      dispatch(setReviews({ ...forReview, id }));
       navigate("/results");
     }
   }, [isQuizEnd]);
 
   //handle next slide when click on submit
   const handleNextSlide = () => {
-    const swiperIndex = questionSwiperRef.current.swiper.activeIndex + 1;
-    if (questions.length != currentQuestionId) {
-      setCurrentQuestionId(questionSwiperRef.current.swiper.slides[swiperIndex]?.getAttribute("id"));
-      setCorrectAnswer(questionSwiperRef.current.swiper.slides[swiperIndex]?.getAttribute("data-correct"));
-      if (correctAnswer == answer) {
-        if (swiperIndex) {
-          setCurrentQuestionId(questionSwiperRef.current.swiper.slides[swiperIndex]?.getAttribute("id"));
-          setCorrectAnswer(questionSwiperRef.current.swiper.slides[swiperIndex]?.getAttribute("data-correct"));
-        }
-        setRightCount(rightCount + 1);
+    var sound = new Audio(clickSound);
+    sound.play();
+    const swiperCurrentIndex = questionSwiperRef.current.swiper.activeIndex;
+    const questionID = questionSwiperRef.current.swiper.slides[swiperCurrentIndex]?.getAttribute("id");
+    const qAnswer = questionSwiperRef.current.swiper.slides[swiperCurrentIndex]?.getAttribute("data-correct");
 
+    if (swiperCurrentIndex + 1 != questions.length) {
+      if (qAnswer == answer) {
+        setForReview([...forReview, { questionID: questionID, qAnswer: qAnswer, userAnswer: answer }]);
+        setRightCount(rightCount + 1);
         questionSwiperRef.current.swiper.slideNext();
         answerSwiperRef.current.swiper.slideNext();
       } else {
+        console.log("not correct");
+        setForReview([...forReview, { questionID: questionID, qAnswer: qAnswer, userAnswer: answer }]);
         setWrongCount(wrongCount + 1);
         questionSwiperRef.current.swiper.slideNext();
         answerSwiperRef.current.swiper.slideNext();
       }
     } else {
-      if (correctAnswer == answer) {
+      if (qAnswer == answer) {
+        setForReview([...forReview, { questionID: questionID, qAnswer: qAnswer, userAnswer: answer }]);
         setRightCount(rightCount + 1);
-        setIsQuizEnd(true);
       } else {
+        setForReview([...forReview, { questionID: questionID, qAnswer: qAnswer, userAnswer: answer }]);
         setWrongCount(wrongCount + 1);
-        setIsQuizEnd(true);
       }
+      setIsQuizEnd(true);
     }
   };
 
@@ -119,7 +121,7 @@ export default function Quize() {
           {questions.map((question, key) => {
             key = key + 1;
             return (
-              <SwiperSlide data-correct={question.AnswerId} id={key} key={key}>
+              <SwiperSlide data-correct={question.AnswerId} id={question.QuestionID} key={key}>
                 <p className="question-text text text--small center">
                   Question {key}/{questions.length}
                 </p>
@@ -128,7 +130,6 @@ export default function Quize() {
             );
           })}
         </Swiper>
-
         <div className="quiz_questions__answers">
           <Swiper allowTouchMove={false} ref={answerSwiperRef}>
             {data.map((answers, index) => (

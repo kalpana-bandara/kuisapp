@@ -1,0 +1,14 @@
+.submit {
+  &.review {
+    display: flex;
+    column-gap: 20px;
+  }
+}
+
+.backBtn {
+  position: absolute;
+  top: 26px;
+  left: 28px;
+  font-size: 23px;
+  color: white;
+}
