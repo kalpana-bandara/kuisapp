@@ -10,6 +10,14 @@ import { GiGiftOfKnowledge } from "react-icons/gi";
 export default function CategoryListScreen() {
   return (
     <div className="quiz_categories">
+      <Link to={"general-knowledge"}>
+        <div className="category">
+          <div className="icon">
+            <GiGiftOfKnowledge />
+          </div>
+          <p>General Knowledge</p>
+        </div>
+      </Link>
       <Link to={"acedemic"}>
         <div className="category">
           <div className="icon">
@@ -48,14 +56,6 @@ export default function CategoryListScreen() {
             <FaBookReader />
           </div>
           <p>Hobbies</p>
-        </div>
-      </Link>
-      <Link to={"general-knowledge"}>
-        <div className="category">
-          <div className="icon">
-            <GiGiftOfKnowledge />
-          </div>
-          <p>General Knowledge</p>
         </div>
       </Link>
     </div>

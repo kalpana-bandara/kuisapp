@@ -8,7 +8,7 @@ import background from "./images/bubble-bg.png";
 import { useDispatch } from "react-redux";
 import { setCorrectCount, setIncorrectCount, setQuestionsCount } from "../reducers/resultsReducer";
 import { setReviews } from "../reducers/reviewsReducer";
-import clickSound from "./audio/submit.wav";
+import clickSound from "./audio/submit.mp3";
 
 export default function Quize() {
   const { id } = useParams();
@@ -101,7 +101,7 @@ export default function Quize() {
       <div style={{ backgroundImage: `url("${background}")`, backgroundSize: "cover" }} className="quiz-header"></div>
       <div className="quiz_questions">
         <Swiper allowTouchMove={false} ref={questionSwiperRef} className="quiz_questions__header">
-          <div className="timer">
+          <div className="hands">
             <div className="🤚">
               <div className="👉"></div>
               <div className="👉"></div>
@@ -114,6 +114,17 @@ export default function Quize() {
           <div id="wrong" className="quiz_questions__utility wrong">
             <span className="text text--small wrongCount">{wrongCount < 10 && wrongCount != 0 ? `0${wrongCount}` : wrongCount}</span>
             <span className="wrong-color"></span>
+          </div>
+          <div class="timer">
+            <div class="circle-timer">
+              <div class="timer-slot">
+                <div class="timer-lt"> </div>
+              </div>
+              <div class="timer-slot">
+                <div class="timer-rt"></div>
+              </div>
+              <div class="count">0</div>
+            </div>
           </div>
           <div id="right" className="quiz_questions__utility right">
             <span className="right-color"></span>

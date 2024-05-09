@@ -4,7 +4,7 @@
   gap: 30px;
 
   .category {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     display: flex;
     text-align: center;
@@ -18,10 +18,12 @@
     p {
       margin: 0;
       padding: 0;
+      color: black;
     }
 
     svg {
       font-size: 35px;
+      color: #a42fc1;
     }
   }
 }

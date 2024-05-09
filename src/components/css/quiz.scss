@@ -3,11 +3,11 @@
 }
 
 .quiz-header {
-  min-height: 250px;
+  min-height: 190px;
   background-color: #a42fc1;
   border-radius: 30px;
 }
-.timer {
+.hands {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -290,4 +290,118 @@ span.right-color {
   height: 8px;
   background-color: green;
   border-radius: 10px;
+}
+
+@keyframes timer-slide-lt {
+  0% {
+    transform: rotate(135deg);
+  }
+  50% {
+    transform: rotate(135deg);
+  }
+  100% {
+    transform: rotate(315deg);
+  }
+}
+@keyframes timer-slide-rt {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(135deg);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes timer-slide-lt {
+  0% {
+    transform: rotate(135deg);
+  }
+  50% {
+    transform: rotate(135deg);
+  }
+  100% {
+    transform: rotate(315deg);
+  }
+}
+@keyframes timer-slide-rt {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(135deg);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+}
+.timer {
+  background-color: aqua;
+}
+.timer .circle-timer {
+  width: 82px;
+  height: 82px;
+  position: relative;
+  cursor: pointer;
+}
+.timer .circle-timer .timer-slot {
+  position: relative;
+  width: 100px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  float: left;
+}
+.timer .circle-timer .timer-slot .timer-lt,
+.timer .circle-timer .timer-slot .timer-rt {
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  left: 0;
+  z-index: 15;
+  border: 7px solid white;
+  width: 40px;
+  height: 40px;
+  margin-left: -27px;
+  margin-top: -35px;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  z-index: 5;
+}
+.timer .circle-timer .timer-slot .timer-lt {
+  animation: 90s linear infinite timer-slide-lt;
+  left: 100%;
+}
+.timer .circle-timer .timer-slot .timer-rt {
+  animation: 90s linear infinite timer-slide-rt;
+}
+.timer .circle-timer .count {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+  line-height: 190px;
+  font-family: sans-serif;
+}
+.timer .circle-timer.paused .timer-lt,
+.timer .circle-timer.paused .timer-rt {
+  animation-play-state: paused;
+  transition: all 90s;
+}
+.timer .circle-timer.paused .timer-lt,
+.timer .circle-timer.paused .timer-rt,
+.timer .circle-timer:hover .timer-lt,
+.timer .circle-timer:hover .timer-rt {
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  border-left-color: transparent;
+  border-top-color: transparent;
+  transition: all 90s;
+}
+.timer .circle-timer.paused .count {
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 90s;
 }

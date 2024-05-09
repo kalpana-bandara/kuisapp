@@ -7,7 +7,7 @@ import "./css/review.scss";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { RxCrossCircled } from "react-icons/rx";
 import { BsCheckCircle } from "react-icons/bs";
-import clickSound from "./audio/submit.wav";
+import clickSound from "./audio/submit.mp3";
 
 export default function Review() {
   const reviews = useSelector((state) => state.reviews.reviews);
@@ -92,11 +92,11 @@ export default function Review() {
                       <div style={{ position: "relative" }}>
                         <input className="checkbox" type="radio" name={`answer${index + 1}`} id={`answer${index + 1}`} />
                         {reviews[index].qAnswer === value ? (
-                          <span style={{ position: "absolute", zIndex: "9999", display: "block", position: "absolute", top: "2px", left: "26%" }}>
+                          <span className="marker" style={{ position: "absolute", zIndex: "9999", display: "block", position: "absolute", top: "2px", left: "26%" }}>
                             <BsCheckCircle style={{ borderRadius: "50px", color: "white", fontSize: "20px", background: "#a42fc1" }} />
                           </span>
                         ) : reviews[index].userAnswer === value ? (
-                          <span style={{ position: "absolute", zIndex: "9999", display: "block", position: "absolute", top: "2px", left: "26%" }}>
+                          <span className="marker" style={{ position: "absolute", zIndex: "9999", display: "block", position: "absolute", top: "2px", left: "26%" }}>
                             <RxCrossCircled style={{ background: "chocolate", borderRadius: "50px", fontSize: "20px", color: "white" }} />
                           </span>
                         ) : null}
