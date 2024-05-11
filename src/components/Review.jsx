@@ -21,7 +21,7 @@ export default function Review() {
   const questionID = reviews.id;
 
   useEffect(() => {
-    fetch("https://quiza-app.onrender.com/get-quiz", {
+    fetch("https://perfect-ruby-calf.cyclic.app/get-quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: questionID }),

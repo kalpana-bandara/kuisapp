@@ -32,7 +32,7 @@ export default function Quize() {
 
   //get the questions and answers to render
   useEffect(() => {
-    fetch("https://quiza-app.onrender.com/get-quiz", {
+    fetch("https://perfect-ruby-calf.cyclic.app/get-quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: id }),

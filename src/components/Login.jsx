@@ -18,7 +18,7 @@ export default function Login({ close }) {
 
   function handleSignUp(e) {
     e.preventDefault();
-    fetch("https://quiza-app.onrender.com/create-user", {
+    fetch("https://perfect-ruby-calf.cyclic.app/create-user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password, email: email }),
@@ -94,7 +94,7 @@ export default function Login({ close }) {
 
   function handleLogin(e) {
     e.preventDefault();
-    fetch("https://quiza-app.onrender.com/login", {
+    fetch("https://perfect-ruby-calf.cyclic.app/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
