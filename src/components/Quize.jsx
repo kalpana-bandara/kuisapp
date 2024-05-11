@@ -32,7 +32,7 @@ export default function Quize() {
 
   //get the questions and answers to render
   useEffect(() => {
-    fetch("https://quiza-app.onrender.com/get-quiz", {
+    fetch("http://localhost:3001/get-quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: id }),
