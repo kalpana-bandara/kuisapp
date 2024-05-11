@@ -41,7 +41,6 @@ export default function Quize() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.data.length > 0) {
           setQuestions(data.data[0]);
         }
