@@ -11,7 +11,7 @@ export default function Categoryquizlist() {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    fetch("https://perfect-ruby-calf.cyclic.app/get-quizlist", {
+    fetch("https://odd-lime-cricket-wig.cyclic.app/get-quizlist", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cat_name: category }),
