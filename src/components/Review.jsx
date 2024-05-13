@@ -21,7 +21,7 @@ export default function Review() {
   const questionID = reviews.id;
 
   useEffect(() => {
-    fetch("https://red-vulture-tutu.cyclic.app/get-quiz", {
+    fetch("https://blushing-drawers-fly.cyclic.app/get-quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: questionID }),

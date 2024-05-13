@@ -32,7 +32,7 @@ export default function Quize() {
 
   //get the questions and answers to render
   useEffect(() => {
-    fetch("https://red-vulture-tutu.cyclic.app/get-quiz", {
+    fetch("https://blushing-drawers-fly.cyclic.app/get-quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: id }),
