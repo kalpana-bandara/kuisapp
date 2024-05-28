@@ -18,7 +18,7 @@ export default function Login({ close }) {
 
   function handleSignUp(e) {
     e.preventDefault();
-    fetch("http://16.16.127.211:3001/create-user", {
+    fetch("https://quizaapp.zapto.org/create-user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password, email: email }),
@@ -94,7 +94,7 @@ export default function Login({ close }) {
 
   function handleLogin(e) {
     e.preventDefault();
-    fetch("http://16.16.127.211:3001/login", {
+    fetch("https://quizaapp.zapto.org/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),

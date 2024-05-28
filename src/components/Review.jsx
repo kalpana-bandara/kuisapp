@@ -21,7 +21,7 @@ export default function Review() {
   const questionID = reviews.id;
 
   useEffect(() => {
-    fetch("http://16.16.127.211:3001/get-quiz", {
+    fetch("https://quizaapp.zapto.org/get-quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: questionID }),
