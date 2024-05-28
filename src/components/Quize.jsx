@@ -32,7 +32,7 @@ export default function Quize() {
 
   //get the questions and answers to render
   useEffect(() => {
-    fetch("https://nice-gray-rooster-hose.cyclic.app/get-quiz", {
+    fetch("http://16.16.127.211:3001/get-quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: id }),
